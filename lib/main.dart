@@ -52,6 +52,8 @@ class HomePage extends StatelessWidget {
             ),
 
             //Botao
+            //GetX usado junto com .obs
+            //GetBuilder usado junto com Update
             GetX<ValueController>(
                 init: valueController,
                 builder: (ctrl) {
