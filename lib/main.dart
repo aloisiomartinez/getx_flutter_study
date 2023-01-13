@@ -6,7 +6,7 @@ import 'package:getx_app_test/value_controller.dart';
 import 'dependency_injection.dart';
 
 void main() {
-  Get.put<UserController>(UserController());
+  //Get.put<UserController>(UserController());
 
   Get.lazyPut<UserController>(() => UserController());
   runApp(const MyApp());

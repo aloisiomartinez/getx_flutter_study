@@ -76,7 +76,7 @@ class DependencyInjection extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return DataScreen();
+                      return const DataScreen();
                     },
                   ),
                 );
@@ -90,12 +90,10 @@ class DependencyInjection extends StatelessWidget {
   }
 }
 
-class DataScreen extends StatelessWidget {
-  DataScreen({
+class DataScreen extends GetView<UserController> {
+  const DataScreen({
     Key? key,
   }) : super(key: key);
-
-  final UserController controller = Get.find();
 
   TextStyle commonStyle() => const TextStyle(
         fontSize: 20,
@@ -113,16 +111,18 @@ class DataScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             // Apresentação do nome
-            Text(
-              'Nome: ${controller.user.value.name}',
-              style: commonStyle(),
-            ),
+            Obx(() => Text(
+                  'Nome: ${controller.user.value.name}',
+                  style: commonStyle(),
+                )),
 
             // Apresentação da idade
-            Text(
-              'idade: ',
-              style: commonStyle(),
-            ),
+            Obx(
+              () => Text(
+                'idade: ${controller.user.value.age}',
+                style: commonStyle(),
+              ),
+            )
           ],
         ),
       ),
