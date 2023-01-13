@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_app_test/navigation.dart';
 import 'package:getx_app_test/user_controller.dart';
 import 'package:getx_app_test/value_controller.dart';
-
-import 'dependency_injection.dart';
 
 void main() {
   //Get.put<UserController>(UserController());
@@ -17,12 +16,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: DependencyInjection());
+        home: const NavigationPage());
   }
 }
 
