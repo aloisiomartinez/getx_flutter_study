@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_app_test/test.dart';
+import 'package:getx_app_test/user_controller.dart';
 import 'package:getx_app_test/value_controller.dart';
 
+import 'dependency_injection.dart';
+
 void main() {
+  Get.put<UserController>(UserController());
+
+  Get.lazyPut<UserController>(() => UserController());
   runApp(const MyApp());
 }
 
@@ -17,7 +22,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: TestPage());
+        home: DependencyInjection());
   }
 }
 
