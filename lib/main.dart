@@ -36,10 +36,9 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Valor
-            GetX<ValueController>(
-              init: valueController,
-              builder: (ctrl) {
-                return Text("Valor definido: ${ctrl.definedValue}");
+            Obx(
+              () {
+                return Text("Valor definido: ${valueController.definedValue}");
               },
             ),
 
@@ -54,21 +53,36 @@ class HomePage extends StatelessWidget {
             //Botao
             //GetX usado junto com .obs
             //GetBuilder usado junto com Update
-            GetX<ValueController>(
-                init: valueController,
-                builder: (ctrl) {
-                  return ctrl.isLoading.value
-                      ? Container(
-                          margin: const EdgeInsets.only(top: 16),
-                          child: const CircularProgressIndicator())
-                      : ElevatedButton(
-                          onPressed: () {
-                            String value = textController.text;
+            // GetX<ValueController>(
+            //     init: valueController,
+            //     builder: (ctrl) {
+            //       return ctrl.isLoading.value
+            //           ? Container(
+            //               margin: const EdgeInsets.only(top: 16),
+            //               child: const CircularProgressIndicator())
+            //           : ElevatedButton(
+            //               onPressed: () {
+            //                 String value = textController.text;
 
-                            valueController.setValue(value);
-                          },
-                          child: const Text("Confirmar"));
-                })
+            //                 valueController.setValue(value);
+            //               },
+            //               child: const Text("Confirmar"));
+            //     })
+
+            //Obx
+            Obx(() {
+              return valueController.isLoading.value
+                  ? Container(
+                      margin: const EdgeInsets.only(top: 16),
+                      child: const CircularProgressIndicator())
+                  : ElevatedButton(
+                      onPressed: () {
+                        String value = textController.text;
+
+                        valueController.setValue(value);
+                      },
+                      child: const Text("Confirmar"));
+            })
           ],
         ),
       ),
